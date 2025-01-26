@@ -1,23 +1,23 @@
 """
 task 1
 
-- Create a function (named get_text_length()) that receives a string (with "Hello" as a default value)
-and returns it's length
-- Create a function (named get_text_length_in_list()) that receives a list of strings and returns it's
-TOTAL length only by using calls to the first function ( get_text_length )
-
+Write a function that takes a list and returns a new list that removes duplicates from the provided list.
+Solve it in two ways.
 """
-
-def get_text_length(text: str ="Hello") -> int:
-    return len(text)
-
-def get_text_length_in_list(list_of_values: list) -> int:
-    total_length = 0
-    for string in list_of_values:
-        total_length += get_text_length(string)
-    return total_length
+def dedupe_v1(x):
+    y = []
+    for i in x:
+        if i not in y:
+            y.append(i)
+    return y
 
 
-example_list = ["qwerty", "asdfg", "kkkki"]
-result = get_text_length_in_list(example_list)
-print(result)
+# this one uses sets
+def dedupe_v2(x):
+    return list(set(x))
+
+
+a = [1, 2, 3, 4, 3, 2, 1]
+print(a)
+print(dedupe_v1(a))
+print(dedupe_v2(a))
